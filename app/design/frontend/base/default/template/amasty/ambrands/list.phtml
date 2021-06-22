@@ -1,0 +1,197 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+?>
+<?php
+/**
+ * @var Amasty_Brands_Block_List $this
+ */
+?>
+<?php
+$items              = $this->getItems();
+$header             = $this->getHeader();
+$allBrandsLetters   = $this->getAllLetters();
+$isShowCounts       = (bool) $this->getShowCounts();
+$showLetters        = (bool) $this->getShowLetters();
+$showSearch         = (bool) $this->getShowSearch();
+$showFilter         = (bool) $this->getShowFilter();
+$brandNamesJson     = json_encode($this->getSearchBrands());
+$filterDisplayAll   = (bool) $this->getFilterDisplayAll();
+$imgWidth           = abs($this->getImageWidth());
+$imgHeight          = abs($this->getImageHeight());
+$imgType            = $this->getImageType() == Amasty_Brands_Block_List::CONFIG_IMAGE_TYPE_BIG
+    ? $this->getImageType() : Amasty_Brands_Block_List::CONFIG_IMAGE_TYPE_ICON;
+$displayType = $this->getDisplayType() == Amasty_Brands_Block_List::CONFIG_DISPLAY_VERTICAL
+    ? $this->getDisplayType() : Amasty_Brands_Block_List::CONFIG_DISPLAY_HORIZONTAL;
+$listClass   = 'content brand-list ';
+$listClass  .= $displayType;
+$listClass  .= $showLetters ? ' show-letters' : '';
+$hlp         = Mage::helper('ambrands');
+$itemMinWidth         = $this->getItemMinWidth();
+$columnSeparatorWidth = $this->getColumnSeparatorWidth();
+$letterIndex = 0;
+$headerColor      = '#' . Mage::getStoreConfig('ambrands/styles/list_color');
+$headerBackground = '#' . Mage::getStoreConfig('ambrands/styles/list_background');
+?>
+<style>
+    .brand-list.horizontal .brand-list_item{
+        min-width: <?php echo $itemMinWidth ?>;
+    }
+    .brand-list.vertical .column-separator {
+        min-width: <?php echo $columnSeparatorWidth ?>;
+    }
+    .brand-list ul.bare-list img {
+        <?php if ($imgWidth): ?>
+            max-width: <?php echo $imgWidth;?>px;
+        <?php endif;?>
+        <?php if ($imgHeight): ?>
+            max-height: <?php echo $imgHeight;?>px;
+        <?php endif;?>
+    }
+    .ambrands-header-container.list{
+        background: <?php echo $headerBackground?>;
+    }
+    .ambrands-header-container.list span {
+        color: <?php echo $headerColor?>;
+    }
+</style>
+<div class="list ambrands-header-container">
+    <div class="ambrands-header">
+        <span><?php echo Mage::getStoreConfig('ambrands/brands_landing/title'); ?></span>
+    </div>
+</div>
+<?php if ($showSearch || $showFilter) :?>
+<div class="brands-filters">
+  <?php echo $this->getSearchHtml(); ?>
+  <?php if ($showFilter) :?>
+    <div class="letters">
+      <div class="letters-box">
+        <a href="javascript:void(0)" class="all active" onclick="filterBrands(this, 'all')"><?php echo $hlp->__('All Brands')?></a>
+      </div>
+      <div class="letters-box">
+        <?php if ($filterDisplayAll) :?>
+          <a href="javascript:void(0)" <?php if (!(in_array('0-9', $allBrandsLetters))) echo "class='disabled'"?>
+            onclick="filterBrands(this, this.innerHTML)">0-9</a>
+          <?php foreach (range('A', 'Z') as $letter) :?>
+            <a href="javascript:void(0)" <?php if (!(in_array($letter, $allBrandsLetters))) echo "class='disabled'"?>
+              onclick="filterBrands(this, this.innerHTML)"><?php echo $letter?></a>
+          <?php endforeach;  ?>
+        <?php else: ?>
+          <?php foreach ($allBrandsLetters as $letter) :?>
+            <a href="javascript:void(0)" onclick="filterBrands(this, this.innerHTML)"><?php echo $letter?></a>
+          <?php endforeach;  ?>
+        <?php endif; ?>
+      </div>
+    </div>
+  <?php endif; ?>
+</div>
+<?php endif; ?>
+
+
+<div class="page-head">
+  <h3><?php echo $header?></h3>
+</div>
+<div class="<?php echo $listClass;?>">
+  <?php if ($items): ?>
+    <?php foreach ($items as $columns): ?>
+      <div class="column-separator">
+      <?php if (!$showLetters): ?>
+        <dl>
+          <dd>
+            <ul class="bare-list">
+      <?php endif;?>
+      <?php foreach ($columns as $letter => $options): ?>
+        <?php if ($showLetters): ?>
+          <dl class="brands-letter letter-<?php echo $letter?>">
+            <dt><?php echo $letter ?></dt>
+              <dd>
+                <ul class="bare-list">
+        <?php endif;?>
+        <?php foreach ($options as $o): ?>
+          <li class="brand-list_item letter-<?php echo $letter?>">
+            <a class="<?php echo $imgType?>" href="<?php echo $o['url'] ?>">
+              <?php if ($o['img']): ?>
+                <img src="<?php echo $o['img'] ?>" />
+              <?php endif ?>
+              <div class="brand-label">
+                <span class="brands-cell">
+                  <?php echo $this->escapeHtml($o['label']) ?>
+                </span>
+                <?php if ($isShowCounts) { echo '&nbsp;<span class="count">('.$o['cnt'].')</span>'; } ?>
+              </div>
+            </a>
+          </li>
+        <?php endforeach ?>
+        <?php if ($showLetters): ?>
+                </ul>
+              </dd>
+            </dl>
+        <?php endif;?>
+      <?php endforeach ?>
+      <?php if (!$showLetters): ?>
+            </ul>
+          </dd>
+        </dl>
+      <?php endif;?>
+      </div>
+    <?php endforeach ?>
+    <div style="clear:both;"></div>
+  <?php endif ?>
+</div>
+<script type="text/javascript">
+    function filterBrands(element, letter) {
+        var elements = document.getElementsByClassName('brands-letter');
+        if (!elements.length) {
+            elements = document.getElementsByClassName('brand-list_item');
+        }
+        if (letter == 'all') {
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.display = null;
+            }
+            if (<?php echo intval(!$showLetters && $displayType == 'vertical')?>) {
+                var list = document.getElementsByClassName('column-separator');
+                for (var i = 0; i < list.length; i++) {
+                    list[i].style.display = null;
+                }
+            }
+        } else {
+            for (var i = 0; i < elements.length; i++) {
+                if((' ' + elements[i].className + ' ').indexOf(' ' + 'letter-'+letter + ' ')
+                    > -1) {
+                    elements[i].style.display = null;
+                } else {
+                    elements[i].style.display = 'none';
+                }
+            }
+
+            if (<?php echo intval(!$showLetters && $displayType == 'vertical')?>) {
+                var list = document.getElementsByClassName('bare-list');
+                for (var i = 0; i < list.length; i++) {
+                    var flag = 0;
+                    var children = list[i].getElementsByClassName('brand-list_item');
+                    for (var k = 0; k < children.length; k++) {
+                        if (children[k].style.display != 'none') {
+                            list[i].parentElement.parentElement.parentElement.style.display = null;
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag == 0) {
+                        list[i].parentElement.parentElement.parentElement.style.display = 'none';
+                    }
+                }
+            }
+        }
+        elements = document.getElementsByClassName('letters-box');
+        for (var i = 0; i < elements.length; i++) {
+            var children = elements[i].children;
+            for (var k = 0; k < children.length; k++) {
+                children[k].removeClassName('active');
+            }
+        }
+        element.addClassName('active');
+    };
+</script>

@@ -1,0 +1,46 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+?>
+<?php /** @var Amasty_Brands_Block_Adminhtml_Brand_Entity $this */?>
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td style="width:50%;"><h3 class="icon-head head-products">
+                    <?php echo $this->getHeaderText() ?>
+                </h3></td>
+            <td class="a-right">
+                <?php echo $this->getButtonsHtml() ?>
+            </td>
+        </tr>
+    </table>
+</div>
+<?php if ($this->getBrandAttributeCode() === '') :?>
+    <?php $_settingUrl = $this->getUrl('adminhtml/system_config/edit', array(
+        'section' => 'ambrands'
+    ))?>
+    <div id="messages">
+        <ul class="messages">
+            <li class="warning-msg">
+                <ul>
+                    <li>
+                        <span>
+                            <a href="<?php echo $_settingUrl; ?>"><?php echo $this->__('Brand Attribute')?></a>&nbsp;
+                            <?php echo $this->__('have to be completed')?>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+<?php else:?>
+    <?php if( !$this->isSingleStoreMode() ): ?>
+        <?php echo $this->getChildHtml('store_switcher');?>
+    <?php endif;?>
+    <div>
+        <?php echo $this->getGridHtml() ?>
+    </div>
+<?php endif;?>

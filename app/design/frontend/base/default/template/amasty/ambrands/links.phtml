@@ -1,0 +1,28 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+?>
+<?php
+$cssClass = $this->getClass() == 'product-view' ? 'product-view ambrands-link' : 'ambrands-link';
+$brands = $this->getBrands() ?>
+<?php if ($brands): ?>
+    <div class="amshopby-links-wrapper clearer" >
+        <?php foreach ($brands as $brand): ?>
+            <?php $brandName = $this->htmlEscape($brand->getName()); ?>
+            <div class="<?php echo $cssClass?>">
+                <a href="<?php echo $brand->getUrl()?> " target="_blank">
+                    <?php if ($brand->getImage()): ?>
+                        <img title="<?php echo $brandName; ?>"
+                                alt="<?php echo $brandName; ?>"
+                                src="<?php echo $brand->getImageUrl()?>">
+                    <?php else : ?>
+                        <?php echo $brandName; ?>
+                    <?php endif; ?>
+                </a>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php endif; ?>

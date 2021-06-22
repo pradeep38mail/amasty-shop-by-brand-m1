@@ -1,0 +1,821 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+-->
+<config>
+    <sections>
+        <ambrands translate="label" module="ambrands">
+            <label>Shop By Brand</label>
+            <tab>amasty</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>190802</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <amasty_information translate="label">
+                    <label>Information</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>ambrands/adminhtml_system_config_fieldset_info</frontend_model>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </amasty_information>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <attribute translate="label comment">
+                            <label>Brand Attribute Code</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_attribute</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Choose the attribute you wish to create a Brand page for. Default: Manufacture</comment>
+                        </attribute>
+                        <brands_page translate="label comment">
+                            <label>Choose CMS Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_cmspages</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Default: All Brands page</comment>
+                        </brands_page>
+                        <url_key translate="label">
+                            <label>Brand URL Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                <model>ambrands/system_config_source_urlcomment</model>
+                            </comment>
+                        </url_key>
+                        <attribute_filter translate="label">
+                            <label>Brand Filter in Layered Navigation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </attribute_filter>
+                        <top_links translate="label">
+                            <label>Add Brands to Account Top Links</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </top_links>
+                        <top_links_pos translate="label">
+                            <label>Position in Top Links</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero required-entry</validate>
+                            <depends>
+                                <top_links>1</top_links>
+                            </depends>
+                        </top_links_pos>
+                    </fields>
+                </general>
+                <brands_landing translate="label">
+                    <label>All Brands Page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <label translate="comment">
+                            <comment><![CDATA[
+To add Brands Listing Block to any CMS Page or Static Block Use This Embedded Code: <br>
+{{block type="ambrands/list" show_search=1 show_filter=1 template="amasty/ambrands/list.phtml"}}
+
+                            ]]></comment>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label>
+                        <title translate="label comment">
+                            <label>Header Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <display_type translate="label">
+                            <label>Brands List Display Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_allbrandsdisplay</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_type>
+                        <columns_num translate="label comment">
+                            <label>Max Column Quantity</label>
+                            <frontend_type>text</frontend_type>
+                            <source_model>ambrands/system_config_source_allbrandsdisplay</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero required-entry</validate>
+                            <comment>If Display Type is Vertical.</comment>
+                            <depends>
+                                <display_type>vertical</display_type>
+                            </depends>
+                        </columns_num>
+                        <items_per_line translate="label comment">
+                            <label>Max Items per Line</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero required-entry</validate>
+                            <comment>If Display Type is Horizontal.</comment>
+                            <depends>
+                                <display_type>horizontal</display_type>
+                            </depends>
+                        </items_per_line>
+                        <show_images translate="label">
+                            <label>Show Brand Logo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_images>
+                        <image_type translate="label">
+                            <label>Brand Logo Size</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_allbrandsimagetype</source_model>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_images>1</show_images>
+                            </depends>
+                        </image_type>
+                        <image_width translate="label comment">
+                            <label>Image Max Width, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <comment>only for "Big" image</comment>
+                            <depends>
+                                <show_images>1</show_images>
+                                <image_type>big</image_type>
+                            </depends>
+                        </image_width>
+                        <image_height translate="label comment">
+                            <label>Image Max Height, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>43</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <comment>Optional.</comment>
+                            <depends>
+                                <show_images>1</show_images>
+                                <image_type>big</image_type>
+                            </depends>
+                        </image_height>
+                        <show_letters translate="label">
+                            <label>Group Brands by First Character</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_letters>
+                        <show_search translate="label">
+                            <label>Enable Search</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_search>
+                        <show_filter translate="label">
+                            <label>Enable Filter by Character</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_filter>
+                        <filter_display_all translate="label comment">
+                            <label>Show Characters without Brands</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>in Filter by Character</comment>
+                            <depends>
+                                <show_filter>1</show_filter>
+                            </depends>
+                        </filter_display_all>
+                        <show_count translate="label comment">
+                            <label>Show Products Quantity</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show the number of products next to Brand name </comment>
+                        </show_count>
+                        <display_zero translate="label">
+                            <label>Show Brands Without Products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_zero>
+                    </fields>
+                </brands_landing>
+                <brand_page  translate="label">
+                    <label>Brand Detailed Page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <layout translate="label">
+                            <label>Layout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_layout</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </layout>
+                        <sort translate="label">
+                            <label>Sort Products By</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_productsort</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort>
+                        <navigation translate="label">
+                            <label>Enable Layered Navigation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_navigation</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </navigation>
+                        <navigation_pos translate="label comment">
+                            <label>Layered Navigation Position</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_topiconposition</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <navigation separator=",">1,2</navigation>
+                                <layout>three_columns</layout>
+                            </depends>
+                            <comment>For three columns layout</comment>
+                        </navigation_pos>
+                        <show_leftmenu translate="label">
+                            <label>Show Brands Sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_leftmenu>
+                    </fields>
+                </brand_page>
+                <slider translate="label">
+                    <label>Brands Slider</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <comment translate="comment">
+                            <comment><![CDATA[
+To add Slider Block to any CMS Page or Static Block Use This Embedded Code: <br>
+{{block type="ambrands/slider" template="amasty/ambrands/slider.phtml"}}
+                            ]]></comment>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </comment>
+                        <enabled translate="label">
+                            <label>Enable Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <title translate="label">
+                            <label>Header Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </title>
+                        <items_num translate="label">
+                            <label>Visible Items Quantity</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero required-entry</validate>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </items_num>
+                        <sort translate="label">
+                            <label>Sort By</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_topmenusortby</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </sort>
+                        <labels translate="label">
+                            <label>Display Brand Labels</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </labels>
+                        <width translate="label">
+                            <label>Slider Max Width, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </width>
+                        <buttons translate="label">
+                            <label>Show Next/Prev Buttons</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </buttons>
+                        <image_width translate="label comment">
+                            <label>Image Max Width, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <comment>Image will be Resized After Upload.</comment>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </image_width>
+                        <image_height translate="label comment">
+                            <label>Image Max Height, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <comment>Optional.</comment>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </image_height>
+                        <pagination translate="label">
+                            <label>Enable Pagination</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </pagination>
+                        <pagination_clickable translate="label">
+                            <label>Clickable Pagination</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                                <pagination>1</pagination>
+                            </depends>
+                        </pagination_clickable>
+                        <infinity translate="label">
+                            <label>Enable Infinity Loop</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </infinity>
+                        <autoplay translate="label">
+                            <label>Enable Auto play</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </autoplay>
+                        <autoplay_delay translate="label">
+                            <label>Autoplay Delay</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero required-entry</validate>
+                            <depends>
+                                <enabled>1</enabled>
+                                <autoplay>1</autoplay>
+                            </depends>
+                        </autoplay_delay>
+                        <simulate_touch translate="label">
+                            <label>Simulate Touch</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </simulate_touch>
+                    </fields>
+                </slider>
+                <topmenu translate="label">
+                    <label>Top Menu Bar</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Add Brands Link in Menu Bar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <position translate="label">
+                            <label>Brands Link Position</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_toplinkposition</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </position>
+                        <custom_position translate="label">
+                            <label>Position Order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero required-entry</validate>
+                            <depends>
+                                <enabled>1</enabled>
+                                <position>custom</position>
+                            </depends>
+                        </custom_position>
+                        <sort translate="label">
+                            <label>Sort By</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_topmenusortby</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </sort>
+                        <items_num translate="label">
+                            <label>Number of Items</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero required-entry</validate>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </items_num>
+                        <icon translate="label">
+                            <label>Display Brand Icon</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </icon>
+                        <icon_position translate="label">
+                            <label>Icon Position</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_topiconposition</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                                <icon>1</icon>
+                            </depends>
+                        </icon_position>
+                        <icon_width translate="label comment">
+                            <label>Icon Max Width, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <comment>Image will be Resized After Upload.</comment>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </icon_width>
+                        <icon_height translate="label comment">
+                            <label>Icon Max Height, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <comment>Optional.</comment>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </icon_height>
+                    </fields>
+                </topmenu>
+                <leftmenu translate="label">
+                    <label>Sidebar</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Show Sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <show_search>
+                            <label>Show Brand Search</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_search>
+                        <top translate="label">
+                            <label>Display on Top</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </top>
+                        <sort translate="label">
+                            <label>Sort By</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_topmenusortby</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </sort>
+                        <items_num translate="label">
+                            <label>Number of Items</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero required-entry</validate>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </items_num>
+                        <icon translate="label">
+                            <label>Display Brand Icon</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </icon>
+                        <icon_position translate="label">
+                            <label>Icon Position</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ambrands/system_config_source_topiconposition</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                                <icon>1</icon>
+                            </depends>
+                        </icon_position>
+                        <icon_width translate="label comment">
+                            <label>Icon Max Width, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <comment>Image will be Resized After Upload.</comment>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </icon_width>
+                        <icon_height translate="label comment">
+                            <label>Icon Max Max Height, px</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-greater-than-zero</validate>
+                            <comment>Optional.</comment>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </icon_height>
+                    </fields>
+                </leftmenu>
+                <styles translate="label">
+                    <label>Styles</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <slider_background translate="label">
+                            <label>Slider Header Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>color</validate>
+                            <comment>Default is F58C12</comment>
+                        </slider_background>
+                        <slider_color translate="label">
+                            <label>Slider Header Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>color</validate>
+                        </slider_color>
+                        <list_background translate="label">
+                            <label>Brands Header Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>color</validate>
+                            <comment>Default is F58C12</comment>
+                        </list_background>
+                        <list_color translate="label">
+                            <label>Brands Header Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>color</validate>
+                        </list_color>
+                    </fields>
+                </styles>
+            </groups>
+        </ambrands>
+    </sections>
+</config>

@@ -1,0 +1,63 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+?>
+<?php
+/**
+ * @var Amasty_Brands_Block_Search $this
+ */
+?>
+<?php if ($this->getData('side')): ?>
+<div class="block block-layered-nav block-layered-nav--no-filters">
+  <div class="block-content toggle-content">
+    <dl>
+      <dt><?php echo Mage::helper('ambrands')->__('Search Brands')?></dt>
+      <dd>
+<?php endif;?>
+
+<div class="input-box">
+  <div class="ambrands-search-wrapper">
+    <input href='#' type="text" onkeyup="searchBrands(this.value)" class="input-text ambrands-search-input" id="ambrands-search-input"
+      placeholder="<?php echo Mage::helper('ambrands')->__('Search Brand')?>" value=""/>
+    <div id="livesearch" ></div>
+  </div>
+</div>
+<?php if ($this->getData('side')): ?>
+      </dd>
+    </dl>
+  </div>
+</div>
+<?php endif;?>
+<script type="text/javascript">
+    brands = <?php echo $this->getBrands(); ?>;
+    function searchBrands(str) {
+        var resDropDown = document.getElementById("livesearch");
+        str = str.trim().toLowerCase();
+        if (str.length==0) {
+            resDropDown.hide();
+            return;
+        }
+        var foundBrands = {};
+
+        for(var url in brands) {
+            if (brands[url].toLowerCase().indexOf(str) != -1){
+                foundBrands[url] = brands[url];
+            }
+        }
+        if (!Object.keys(foundBrands).length) {
+            resDropDown.hide();
+        } else {
+            var result = '';
+            for(var url in foundBrands) {
+                result += '<a href="' + url +'">'
+                    + foundBrands[url] + '</a>';
+            }
+            resDropDown.style.display = "block";;
+            resDropDown.innerHTML = result;
+        }
+        return;
+    };
+</script>

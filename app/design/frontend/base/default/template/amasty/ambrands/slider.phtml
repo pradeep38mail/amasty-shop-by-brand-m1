@@ -1,0 +1,96 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+?>
+<?php
+/**
+ * @var Amasty_Brands_Block_Slider $this
+ */
+?>
+<?php
+$items          = $this->getItems();
+$sliderOptions  = $this->getSliderOptions();
+$hlp            = Mage::helper('ambrands');
+$showLabel      = $this->getShowLabel();
+$iconUrl        = $hlp->getImageUrl('slider');
+$showPagination = $this->getShowPagination();
+$showButtons    = $this->getShowButtons();
+$imgWidth       = $this->getImageWidth() ? $this->getImageWidth() : Amasty_Brands_Block_Slider::DEFAULT_IMG_WIDTH;
+$imgHeight      = $this->getImageHeight();
+$headerColor      = '#' . Mage::getStoreConfig('ambrands/styles/slider_color');
+$headerBackground = '#' . Mage::getStoreConfig('ambrands/styles/slider_background');
+$buttonWidth    = 40;
+$itemsPerView   = $this->getItemsNumber();
+$sliderWidth    = $this->getSliderWidth() ? $this->getSliderWidth() : ($imgWidth + 10) * $itemsPerView;
+$widthPerSlide  = $sliderWidth / $itemsPerView;
+?>
+<style>
+    .amslider {
+        max-width: <?php echo $buttonWidth * 2 + $sliderWidth; ?>px;
+        padding: 0 <?php echo $buttonWidth?>px;
+    }
+    .amslider .swiper-slide .swiper-brand img {
+        <?php if ($imgWidth): ?>
+            max-width: <?php echo $imgWidth;?>px;
+        <?php endif;?>
+        <?php if ($imgHeight): ?>
+            max-height: <?php echo $imgHeight;?>px;
+        <?php endif;?>
+    }
+    .amslider-container .ambrands-header-container{
+        background: <?php echo $headerBackground?>;
+    }
+    .amslider-container .ambrands-header-container span {
+        color: <?php echo $headerColor?>;
+    }
+</style>
+<div class="amslider-container">
+    <div class="ambrands-header-container">
+        <div class="ambrands-header">
+            <span><?php echo Mage::getStoreConfig('ambrands/slider/title'); ?></span>
+        </div>
+    </div>
+<div class="amslider <?php if($showLabel) echo ' show-label'?>">
+  <?php if ($showPagination): ?><div class="swiper-pagination"></div><?php endif;?>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <?php foreach ($items as $brand): ?>
+        <a href="<?php echo $brand->getUrl()?>"class="swiper-slide">
+            <div class="swiper-brand <?php if ($showLabel) echo ' brand-label' ?>">
+              <img src="<?php echo $this->getImgPath($brand); ?>" />
+                <?php if ($showLabel): ?>
+                  <div class="brand-title"><?php echo $brand->getName()?></div>
+                <?php endif; ?>
+            </div>
+        </a>
+      <?php endforeach;?>
+    </div>
+  </div>
+    <?php if ($showButtons): ?>
+    <div class="swiper-button-prev"></div>
+    <div  class="swiper-button-next"></div>
+    <?php endif; ?>
+</div>
+</div>
+<script type="text/javascript">
+  document.observe("dom:loaded", function () {
+    var swiper = new Swiper('.swiper-container', {
+      <?php foreach ($sliderOptions as $option => $value) {
+        echo $option . ':' . $value . ",";
+      }?>
+      breakpoints: {
+      <?php for($i = 1; $i < $itemsPerView; $i++) :?>
+        <?php echo ($i + 1) * ($imgWidth + 20 + 10) + $buttonWidth * 2; ?> : {
+          slidesPerView: <?php echo $i ?>
+          },
+        <?php endfor; ?>
+      },
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      spaceBetween: 10
+    });
+  });
+</script>

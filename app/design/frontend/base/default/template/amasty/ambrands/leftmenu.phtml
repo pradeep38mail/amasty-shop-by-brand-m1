@@ -1,0 +1,37 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+?>
+<?php
+    $iconWidth = max(0, intval($this->getIconWidth()));
+    $iconHeight = max(0, intval($this->getIconHeight()));
+    $iconClass = str_replace(' ', '.',$this->getIconClass());
+?>
+<style>
+    .ambrands_leftmenu img<?php echo $iconClass?> {
+        <?php if ($iconWidth): ?>
+        max-width: <?php echo $iconWidth;?>px;
+        <?php endif;?>
+        <?php if ($iconHeight): ?>
+        max-height: <?php echo $iconHeight;?>px;
+        <?php endif;?>
+</style>
+
+<div class="block block-layered-nav block-layered-nav--no-filters">
+    <div class="block-content toggle-content">
+        <dl>
+            <dt><?php echo $this->__('Brands') ?></dt>
+            <?php foreach ($this->getItems() as $item) :?>
+                <dd class="ambrands_leftmenu"><?php echo $this->getBrandLabelUrl($item);?></dd>
+            <?php endforeach;?>
+            <dd class="ambrands_leftmenu">
+                <button class="button" type="button" onclick="setLocation('<?php echo Mage::helper('ambrands')->getBrandsPageUrl(); ?>')">
+                    <span><span>
+                <?php echo $this->__('View All') ?></span></span></button>
+            </dd>
+        </dl>
+    </div>
+</div>

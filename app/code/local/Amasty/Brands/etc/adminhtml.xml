@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+-->
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <ambrands translate="title" module="ambrands">
+                    <title>Shop By Brand</title>
+                    <sort_order>1000</sort_order>
+                    <children>
+                        <list translate="title" module="ambrands">
+                            <title>Manage Brands</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/ambrands_entity/index</action>
+                        </list>
+                        <topmenu translate="title" module="ambrands">
+                            <title>Top Menu Bar</title>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/ambrands_topmenu/index</action>
+                        </topmenu>
+                        <leftmenu translate="title" module="ambrands">
+                            <title>Sidebar</title>
+                            <sort_order>30</sort_order>
+                            <action>adminhtml/ambrands_leftmenu/index</action>
+                        </leftmenu>
+                        <slider translate="title" module="ambrands">
+                            <title>Brands Slider</title>
+                            <sort_order>40</sort_order>
+                            <action>adminhtml/ambrands_slider/index</action>
+                        </slider>
+                        <import translate="title" module="ambrands">
+                            <title>Import Brands</title>
+                            <action>adminhtml/import/index</action>
+                            <sort_order>50</sort_order>
+                        </import>
+                        <export translate="title" module="ambrands">
+                            <title>Export Brands </title>
+                            <action>adminhtml/export/index</action>
+                            <sort_order>60</sort_order>
+                        </export>
+                        <settings translate="title" module="ambrands">
+                            <title>Settings</title>
+                            <action>adminhtml/system_config/edit/section/ambrands</action>
+                            <sort_order>70</sort_order>
+                        </settings>
+                    </children>
+                </ambrands>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <ambrands>
+                                <title>Amasty Shop By Brand</title>
+                                <children>
+                                    <list>
+                                        <title>Manage Brands</title>
+                                    </list>
+                                    <topmenu>
+                                        <title>Top Menu Bar</title>
+                                    </topmenu>
+                                    <leftmenu>
+                                        <title>Sidebar</title>
+                                    </leftmenu>
+                                    <slider>
+                                        <title>Brands Slider</title>
+                                    </slider>
+                                    <import>
+                                        <title>Import Brands</title>
+                                    </import>
+                                    <export>
+                                        <title>Export Brands </title>
+                                    </export>
+                                    <settings>
+                                        <title>Settings</title>
+                                    </settings>
+                                </children>
+                            </ambrands>
+                        </children>
+                    </catalog>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ambrands translate="title" module="ambrands">
+                                        <title>Amasty Brands</title>
+                                    </ambrands>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

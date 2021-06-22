@@ -1,0 +1,93 @@
+AMASTY.COM END-USER LICENSE AGREEMENT
+
+This End-User License Agreement (“Agreement”) is entered into by and between You [“Customer”, according to the
+definition provided in clauses 1.2 to 1.4 of Amasty Terms and Conditions] and NetStra Solutions s.r.o., established and
+existing under the law of Slovakia, with its registered office at Kutuzovova 3, 831 03, Slovakia, Company Identification
+Number: 48 104 663, entered into the Commercial register of District Court of Bratislava I, Section: Sro,
+Entry No.: 103421/B, doing business under AMASTY trademark (“Amasty”).
+
+1.    General Provisions
+
+1.1.  This Agreement comes into effect when the Customer completes the purchase of the Software at amasty.com website
+      according to clauses 2.1 and 2.2 of Amasty Terms and Conditions and receives a copy of the Software via Customer
+      Account or other means at our discretion, according to articles 4 and 5 of Amasty Terms and Conditions.
+1.2.  By purchasing the Software, the Customer acknowledges that they have read this Agreement, agree to the content of
+      the Agreement and its terms, and agree to use the Software in compliance with this Agreement.
+
+2.    Licensing
+
+2.1.  Amasty is the sole intellectual property and copyright holder of the Software. All now known or hereafter known
+      tangible and intangible rights, title, interest, copyrights and moral rights in and to the Software, all logical
+      and technical components of Software constituting integral parts of such Software, including but not limited to
+      object and source code, technical documentation, algorithms, databases, UI design components, images, videos,
+      animations, audio, text, data are owned by Amasty.
+2.2.  The Software or a portion of it is Amasty’s intellectual property and a copyrightable matter and is liable to
+      protection by the law. Any Customer activities that infringe this Agreement and/or Amasty Terms and Conditions,
+      violate the intellectual property right and copyright and will be prosecuted in accordance with the applicable
+      law.
+2.3.  According to the present Agreement, Amasty grants the Customer a revocable, non-exclusive, non-transferable,
+      limited license to download, install and use the Software for their personal/business needs and purposes in
+      accordance with this Agreement and Amasty Terms and Conditions.
+2.4.  For the avoidance of doubt, the Agreement does not transfer the intellectual property right and/or the Copyright
+      of Amasty to the Customer.
+2.5.  This Agreement grants the Customer the right to use one copy of the Software per one Magento installation in
+      accordance with the terms of the Agreement.
+2.6.  The Customer agrees and accepts that the number of licenses purchased from Amasty must at all times correspond to
+      the number of Customer’s Magento installations.
+
+3.    Limitations
+
+3.1.  The Customer agrees and accepts that they will not use the Software for any purposes other than their personal
+      and/or business use and in strict accordance with the present Agreement and Amasty Terms and Conditions.
+3.2.  The Customer shall not give away, license, sub-license, sell, rent, lease, distribute, transmit, host, outsource,
+      disclose or otherwise commercially exploit the Software and Documentation, or make the whole Software or
+      Documentation or part of it available to any third parties, including in the form of a resellable customized
+      solution.
+3.3.  The Customer must not remove or alter any brand, copyright, disclaimer, terms of use, attribution or any other
+      proprietary notices or marks within the Software, including but not limited to Amasty branding in file names,
+      class names, variables, texts, links or UI items.
+
+4.    License Transfer
+
+4.1.  In case a necessity to transfer a license to a third party arises, the Customer must send a written request to
+      Amasty stating (a) the account email from which the transfer is requested; (b) the list of Software licenses to be
+      transferred, including the Order ID associated with each license and the date the order was completed; (c) the
+      reason for the transfer; (d) the account email to which the transfer is requested.
+4.2.  Amasty shall request written consent from both account emails by sending a corresponding email notification.
+4.3.  In case one or more account emails fail to provide the consent, the transfer shall not be completed.
+4.4.  Amasty reserves the right to deny the license transfer without stating further reasons.
+
+5.    Limitation of Liability
+
+5.1.  Amasty shall not be liable to the Customer for any damages, including but not limited to loss of profit and/or
+      saving, or identical, or consequential, caused to the Customer, Customer’s information and/or business entity,
+      arising out of the use or inability to use the Software.
+5.2.  Amasty shall not be liable for prosecution arising from the use of the Software against the law or for any
+      illegal activities by the Customer with the use of the Software.
+
+6.    Term and Termination
+
+6.1.  This Agreement remains effective until terminated by the Customer or Amasty.
+6.2.  The Customer may withdraw from the license in cases and following the provisions of article 6 of Amasty Terms and
+      Conditions.
+6.3.  Amasty reserves the right to terminate Customer’s license in case such Customer fails to use the Software in
+      accordance with the terms and provisions of this Agreement and/or Amasty Terms and Conditions.
+6.4.  In case Amasty initiates the termination of license as described hereby, the cost of the Software is not
+      refundable to the Customer.
+6.5.  Regardless of the party initiating the termination of the license, the Customer shall uninstall and destroy any
+      and all copies of the licensed Software immediately after the termination and/or receiving the termination notice from Amasty.
+6.6.  In case the Customer continues to use the Software after the termination of the license, they hereby agree to
+      accept an injunction to enjoin them from its further use and to pay all costs (including but not limited to
+      reasonable attorney fees) to enforce Amasty’s revocation of Customer’s license and any damages suffered by
+      Amasty due to the misuse of the Software.
+
+7.    Final Provisions
+
+7.1.  This Agreement has been valid and effective since August 13rd, 2020.
+7.2.  This Agreement cancels the terms of the previous Agreement.
+7.3.  Amasty reserves the right to adopt any changes and amendments hereto. The up-to-date version hereof is available
+      on www.amasty.com.
+7.4.  Potential disputes between Amasty and its Customers may be subject to an out-of-court settlement in accordance
+      with clause 12.4 of Amasty Terms and Conditions.
+
+The last update of the document was on February 10th, 2021.

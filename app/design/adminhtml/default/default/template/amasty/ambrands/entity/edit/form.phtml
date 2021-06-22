@@ -1,0 +1,75 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+?>
+<?php /** @var Amasty_Brands_Block_Adminhtml_Brand_Entity_Edit_Form $this */?>
+<?php /** @var Amasty_Brands_Block_Adminhtml_Brand_Entity_Edit_Tabs $tabs */ ?>
+<?php $tabs = $this->getLayout()->getBlock('ambrands.brand.entity.tabs'); ?>
+<div class="entry-edit">
+    <?php echo $this->getFormHtml();?>
+</div>
+<?php echo $this->getChildHtml('form_after');?>
+
+<?php if($_gridJsObject=$tabs->getProductsBlock()->getJsObjectName()): ?>
+<script>
+    var brandProducts = $H(<?php echo $this->getProductsJson() ?>);
+    $('in_brand_products').value = brandProducts.toQueryString();
+
+    function registerBrandProduct(grid, element, checked){
+        if(checked){
+            if(element.positionElement){
+                element.positionElement.disabled = false;
+                brandProducts.set(element.value, element.positionElement.value);
+            }
+        }
+        else{
+            if(element.positionElement){
+                element.positionElement.disabled = true;
+            }
+            brandProducts.unset(element.value);
+        }
+        $('in_brand_products').value = brandProducts.toQueryString();
+        grid.reloadParams = {'selected_products[]':brandProducts.keys()};
+    }
+    function brandProductRowClick(grid, event){
+        var trElement = Event.findElement(event, 'tr');
+        var isInput   = Event.element(event).tagName == 'INPUT';
+        if(trElement){
+            var checkbox = Element.getElementsBySelector(trElement, 'input');
+            if(checkbox[0]){
+                var checked = isInput ? checkbox[0].checked : !checkbox[0].checked;
+                <?php echo $_gridJsObject ?>.setCheckboxChecked(checkbox[0], checked);
+            }
+        }
+    }
+    function positionChange(event){
+        var element = Event.element(event);
+        if(element && element.checkboxElement && element.checkboxElement.checked){
+            brandProducts.set(element.checkboxElement.value, element.value);
+            $('in_brand_products').value = brandProducts.toQueryString();
+        }
+    }
+
+    var tabIndex = 1000;
+    function brandProductRowInit(grid, row){
+        var checkbox = $(row).getElementsByClassName('checkbox')[0];
+        var position = $(row).getElementsByClassName('input-text')[0];
+        if(checkbox && position){
+            checkbox.positionElement = position;
+            position.checkboxElement = checkbox;
+            position.disabled = !checkbox.checked;
+            position.tabIndex = tabIndex++;
+            Event.observe(position,'keyup',positionChange);
+        }
+    }
+
+
+    <?php echo $_gridJsObject ?>.rowClickCallback = brandProductRowClick;
+    <?php echo $_gridJsObject ?>.initRowCallback = brandProductRowInit;
+    <?php echo $_gridJsObject ?>.checkboxCheckCallback = registerBrandProduct;
+    <?php echo $_gridJsObject ?>.rows.each(function(row){brandProductRowInit(<?php echo $_gridJsObject ?>, row)});
+</script>
+<?php endif; ?>

@@ -1,0 +1,19 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+?>
+<?php
+/** @var Amasty_Brands_Block_Brand $this */
+$brand = $this->getBrand();
+?>
+<div class="brand-page">
+    <div class="page-title category-title">
+        <h1><?php echo $brand->getTitle()?></h1>
+    </div>
+    <?php echo $this->getImageHtml() ?>
+    <div class="category-description std"><?php echo $brand->getDescription()?></div>
+    <?php echo $this->getChildHtml('product_list'); ?>
+</div>

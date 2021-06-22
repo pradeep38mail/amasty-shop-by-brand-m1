@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+-->
+<config>
+    <modules>
+        <Amasty_Brands>
+            <active>true</active>
+            <codePool>local</codePool>
+            <edition>community</edition>
+            <depends>
+                <Mage_Catalog />
+            </depends>
+        </Amasty_Brands>
+    </modules>
+</config>

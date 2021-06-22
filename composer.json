@@ -1,0 +1,15 @@
+{
+    "name": "amasty/shop-by-brands",
+    "type": "magento-module",
+    "license": "None",
+    "homepage": "https://github.com/pradeep38mail/amasty-shop-by-brand-m1",
+    "description": "Amasty Shop By Brands",
+    "authors": [
+        {
+            "name": "Amasty"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

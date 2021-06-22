@@ -1,0 +1,19 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Base
+ */
+?>
+<?php
+/**
+ * @var Amasty_Base_Block_Adminhtml_Notifications $this
+ */
+?>
+<?php if ($count = $this->getUpdatesCount()): ?>
+    <style>
+        .amasty-extensions-tab:after {
+            content: '<?= (int)$count ?>';
+        }
+    </style>
+<?php endif; ?>

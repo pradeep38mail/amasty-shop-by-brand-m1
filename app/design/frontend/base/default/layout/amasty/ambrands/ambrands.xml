@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/amasty/ambrands/brands.css</stylesheet></action>
+            <action method="addJs"  ifconfig="ambrands/slider/enabled"><file>amasty/ambrands/swiper.min.js</file></action>
+            <action method="addCss" ifconfig="ambrands/slider/enabled"><stylesheet>css/amasty/ambrands/swiper.min.css</stylesheet></action>
+        </reference>
+    </default>
+
+    <default>
+        <reference name="top.links">
+            <action ifconfig="ambrands/general/top_links" method="addLink" translate="label title" module="ambrands"><label>Brands</label>
+                <url helper="ambrands/getBrandsPageUrl"/>
+                <title>Brands</title>
+                <prepare/><urlParams/>
+                <position helper="ambrands/getTopLinksPos" />
+            </action>
+        </reference>
+    </default>
+
+    <catalogsearch_result_index>
+        <reference name="left">
+            <block type="ambrands/leftmenu" name="ambrands.leftmenu" template="amasty/ambrands/leftmenu.phtml"/>
+            <!-- move to the top-->
+            <action ifconfig="ambrands/leftmenu/top" method="unsetChild">
+                <alias>catalogsearch.leftnav</alias>
+            </action>
+            <action ifconfig="ambrands/leftmenu/top" method="unsetChild">
+                <alias>enterprisesearch.leftnav</alias>
+            </action>
+            <action ifconfig="ambrands/leftmenu/top"  method="insert">
+                <blockName>catalogsearch.leftnav</blockName>
+                <siblingName>ambrands.leftmenu</siblingName>
+                <after>1</after>
+            </action>
+            <action ifconfig="ambrands/leftmenu/top"  method="insert">
+                <blockName>enterprisesearch.leftnav</blockName>
+                <siblingName>ambrands.leftmenu</siblingName>
+                <after>1</after>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalog_category_layered>
+        <remove name="catalog.leftnav" />
+        <remove name="enterprisecatalog.leftnav"/>
+        <reference name="left">
+            <block type="ambrands/catalog_layer_view" name="ambrands.navleft" template="catalog/layer/view.phtml">
+                <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+            </block>
+            <block type="ambrands/leftmenu" name="ambrands.leftmenu" template="amasty/ambrands/leftmenu.phtml" />
+            <!-- move to the top-->
+            <action ifconfig="ambrands/leftmenu/top" method="unsetChild">
+                <alias>ambrands.navleft</alias>
+            </action>
+            <action ifconfig="ambrands/leftmenu/top"  method="insert">
+                <blockName>ambrands.navleft</blockName>
+                <siblingName>ambrands.leftmenu</siblingName>
+                <after>1</after>
+            </action>
+        </reference>
+    </catalog_category_layered>
+
+
+    <ambrands_index_view>
+        <reference name="content">
+            <block type="core/messages" name="global_messages" as="global_messages"/>
+            <block type="core/messages" name="messages" as="messages"/>
+
+            <block type="ambrands/brand" name="category.products" template="amasty/ambrands/brand.phtml">
+                <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+                    <action method="setToolbarBlockName"><value>ambrands_product_list_toolbar</value></action>
+                    <action method="setColumnCount"><count>4</count></action>
+                    <block type="core/text_list" name="product_list.name.after" as="name.after"/>
+                    <block type="core/text_list" name="product_list.after" as="after"/>
+                    <block type="ambrands/catalog_product_list_toolbar" name="ambrands_product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="ambrands/catalog_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                </block>
+            </block>
+        </reference>
+    </ambrands_index_view>
+    <ambrands_index_view>
+        <update handle="product_list"/>
+    </ambrands_index_view>
+    
+    <ambrands_index_view>
+        <update handle="MAP_popup" />
+    </ambrands_index_view>
+
+    <amshopby_index_index>
+        <reference name="left">
+            <block type="ambrands/leftmenu" name="ambrands.left" template="amasty/ambrands/leftmenu.phtml" />
+        </reference>
+    </amshopby_index_index>
+
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addJs"><file>jscolor/jscolor.js</file></action>
+        </reference>
+    </adminhtml_system_config_edit>
+</layout>

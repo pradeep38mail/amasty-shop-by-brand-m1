@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Brands
+ */
+-->
+<layout>
+    <adminhtml_ambrands_entity_index>
+        <reference name="content">
+            <block type="ambrands/adminhtml_brand_entity"
+                   name="ambrands.entity.grid.container"
+                   template="amasty/ambrands/entity/grid.phtml"
+            >
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_ambrands_entity_index>
+    <adminhtml_ambrands_topmenu_index>
+        <reference name="content">
+            <block type="ambrands/adminhtml_brand_topmenu"
+                   name="ambrands.topmenu.grid.container"
+                   template="amasty/ambrands/entity/grid.phtml" >
+                <block type="core/template" name="formkey" as="formkey" template="formkey.phtml"/>
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_ambrands_topmenu_index>
+    <adminhtml_ambrands_slider_index>
+        <reference name="content">
+            <block type="ambrands/adminhtml_brand_slider"
+                   name="ambrands.slider.grid.container"
+                   template="amasty/ambrands/entity/grid.phtml" >
+                <block type="core/template" name="formkey" as="formkey" template="formkey.phtml"/>
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_ambrands_slider_index>
+    <adminhtml_ambrands_leftmenu_index>
+        <reference name="content">
+            <block type="ambrands/adminhtml_brand_leftmenu"
+                   name="ambrands.leftmenu.grid.container"
+                   template="amasty/ambrands/entity/grid.phtml" >
+                <block type="core/template" name="formkey" as="formkey" template="formkey.phtml"/>
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_ambrands_leftmenu_index>
+
+    <adminhtml_ambrands_entity_edit>
+        <update handle="editor"/>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" template="store/switcher.phtml" />
+            <block type="ambrands/adminhtml_brand_entity_edit_tabs" name="ambrands.brand.entity.tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="ambrands/adminhtml_brand_entity_edit" name="ambrands.brand.entity.edit"></block>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_ambrands_entity_edit>
+    <adminhtml_ambrands_topmenu_edit>
+        <update handle="editor"/>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" template="store/switcher.phtml" />
+            <block type="ambrands/adminhtml_brand_topmenu_edit_tabs" name="ambrands.brand.topmenu.tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="ambrands/adminhtml_brand_topmenu_edit" name="ambrands.brand.topmenu.edit"></block>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_ambrands_topmenu_edit>
+    <adminhtml_ambrands_leftmenu_edit>
+        <update handle="editor"/>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" template="store/switcher.phtml" />
+            <block type="ambrands/adminhtml_brand_leftmenu_edit_tabs" name="ambrands.brand.leftmenu.tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="ambrands/adminhtml_brand_leftmenu_edit" name="ambrands.brand.leftmenu.edit"></block>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_ambrands_leftmenu_edit>
+    <adminhtml_ambrands_slider_edit>
+        <update handle="editor"/>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" template="store/switcher.phtml" />
+            <block type="ambrands/adminhtml_brand_slider_edit_tabs" name="ambrands.brand.slider.tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="ambrands/adminhtml_brand_slider_edit" name="ambrands.brand.slider.edit"></block>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_ambrands_slider_edit>
+
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addJs"><file>jscolor/jscolor.js</file></action>
+        </reference>
+    </adminhtml_system_config_edit>
+</layout>
